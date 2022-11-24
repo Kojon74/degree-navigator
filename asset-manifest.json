@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/degree-navigator/static/css/main.0fd79535.css",
+    "main.js": "/degree-navigator/static/js/main.bee4d9ec.js",
+    "index.html": "/degree-navigator/index.html",
+    "main.0fd79535.css.map": "/degree-navigator/static/css/main.0fd79535.css.map",
+    "main.bee4d9ec.js.map": "/degree-navigator/static/js/main.bee4d9ec.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0fd79535.css",
+    "static/js/main.bee4d9ec.js"
+  ]
+}
