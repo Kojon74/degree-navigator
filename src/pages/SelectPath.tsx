@@ -6,10 +6,10 @@ type Props = {};
 const SelectPath = (props: Props) => {
   return (
     <div>
-      <Link to="/1" style={{ display: "block" }}>
+      <Link to="/home/1" style={{ display: "block" }}>
         Path 1
       </Link>
-      <Link to="/2" style={{ display: "block" }}>
+      <Link to="/home/2" style={{ display: "block" }}>
         Path 2
       </Link>
     </div>

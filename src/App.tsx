@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<SelectPath />} />
-        <Route path="/:path" element={<Home />} />
+        <Route path="/home/:path" element={<Home />} />
         <Route path="/elective-details/:id" element={<ElectiveDetails />} />
         <Route path="/course-details/:id" element={<CourseDetails />} />
       </Routes>
