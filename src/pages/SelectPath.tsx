@@ -1,9 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-type Props = {};
-
-const SelectPath = (props: Props) => {
+const SelectPath = () => {
   return (
     <div>
       <Link to="/home/1" style={{ display: "block" }}>

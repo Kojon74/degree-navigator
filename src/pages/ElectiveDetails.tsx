@@ -17,9 +17,10 @@ const ElectiveDetails = () => {
   return (
     <div className="elective-details">
       <h1>{elective?.name}</h1>
-      {elective?.courses.map((course) => (
+      {elective?.courses.map((course, i) => (
         <div style={{ display: "inline" }}>
-          <Link to={`/course-details/${course}`}>{course}</Link>,{" "}
+          <Link to={`/course-details/${course}`}>{course}</Link>
+          {i < elective.courses.length - 1 ? ", " : ""}
         </div>
       ))}
     </div>

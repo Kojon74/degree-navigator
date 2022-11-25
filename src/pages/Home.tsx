@@ -3,15 +3,25 @@ import { Requirements1, Requirements2 } from "../Courses";
 
 type RequirementsType = {
   type: string;
-  name: string | Array<string>;
+  name?: string;
   numCourses?: number;
+  elective?: string;
+  courses?: Array<string>;
+  numSubCourses?: number;
+  bound?: string;
 };
 
-const Home = () => {
-  const { path } = useParams();
+type Props = {
+  setPath: any;
+};
 
-  const Requirements =
-    path && parseInt(path) === 1 ? Requirements1 : Requirements2;
+const Home = ({ setPath }: Props) => {
+  const { id } = useParams();
+  setPath(id);
+
+  console.log();
+
+  const Requirements = id && parseInt(id) === 1 ? Requirements1 : Requirements2;
 
   return (
     <div>
@@ -25,40 +35,65 @@ const Home = () => {
             padding: "10px",
           }}
         >
-          {list.map(({ type, name, numCourses }: RequirementsType) => (
-            <div>
-              <p style={{ display: "inline" }}>
-                {type === "course" || numCourses === 1
-                  ? "1 course"
-                  : `${numCourses} courses`}{" "}
-                from{" "}
-              </p>
-              {type === "courses" && typeof name !== "string" ? (
-                name.map((nameOpt, i) => (
+          {list.map(
+            ({
+              type,
+              name,
+              numCourses,
+              elective,
+              courses,
+              bound,
+              numSubCourses,
+            }: RequirementsType) => (
+              <div>
+                <p style={{ display: "inline" }}>
+                  {type === "course" || numCourses === 1
+                    ? "1 course"
+                    : `${numCourses} courses`}{" "}
+                  from{" "}
+                </p>
+                {type === "elective&courses" &&
+                elective &&
+                courses &&
+                bound &&
+                numSubCourses ? (
                   <div style={{ display: "inline" }}>
+                    {"{"}
                     <Link
-                      to={`/course-details/${nameOpt}`}
+                      to={`/elective-details/${elective}`}
                       style={{ display: "inline" }}
                     >
-                      <p style={{ display: "inline" }}>{nameOpt}</p>
-                    </Link>
-                    <p style={{ display: "inline" }}>
-                      {i === name.length ? "" : ", "}
-                    </p>
+                      <p style={{ display: "inline" }}>{elective}</p>
+                    </Link>{" "}
+                    with at {bound === "most" ? "most" : "least"}{" "}
+                    {numSubCourses} {numSubCourses > 1 ? "courses" : "course"}{" "}
+                    from{" "}
+                    {courses.map((nameOpt, i) => (
+                      <div style={{ display: "inline" }}>
+                        <Link
+                          to={`/course-details/${nameOpt}`}
+                          style={{ display: "inline" }}
+                        >
+                          <p style={{ display: "inline" }}>{nameOpt}</p>
+                        </Link>
+                        {i === courses.length - 1 ? "" : ", "}
+                      </div>
+                    ))}
+                    {"}"}
                   </div>
-                ))
-              ) : (
-                <Link
-                  to={`/${
-                    type === "course" ? "course-details" : "elective-details"
-                  }/${name}`}
-                  style={{ display: "inline" }}
-                >
-                  <p style={{ display: "inline" }}>{name}</p>
-                </Link>
-              )}
-            </div>
-          ))}
+                ) : (
+                  <Link
+                    to={`/${
+                      type === "course" ? "course-details" : "elective-details"
+                    }/${name}`}
+                    style={{ display: "inline" }}
+                  >
+                    <p style={{ display: "inline" }}>{name}</p>
+                  </Link>
+                )}
+              </div>
+            )
+          )}
         </div>
       ))}
     </div>

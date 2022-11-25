@@ -17,22 +17,38 @@ const CourseDetails = () => {
   if (!course) return <div>Loading</div>;
 
   return (
-    <div className="requirement-details">
+    <div className="course-details">
       <h1>{course.name}</h1>
       Pre-requisites:{" "}
       {course.preReqs
         ? course.preReqs.map((preReq: typeof course.preReqs[0], i) => {
-            if (typeof preReq === "string") {
-              const preReqName = Courses[preReq].name;
+            if (course.preReqs) {
+              if (typeof preReq === "string") {
+                const preReqName = Courses[preReq].name;
+                return (
+                  <div style={{ display: "inline" }}>
+                    <Link to={`/course-details/${preReqName}`}>
+                      {preReqName}
+                    </Link>
+                    {i < course.preReqs.length - 1 ? ", " : ""}
+                  </div>
+                );
+              }
               return (
-                <Link to={`/course-details/${preReqName}`}>{preReqName}</Link>
+                <p>
+                  {` ${i > 0 && "and "}${preReq.num} of `}
+                  {preReq.courses.map((preReqOpt, i) => (
+                    <div style={{ display: "inline" }}>
+                      <Link to={`/course-details/${Courses[preReqOpt].name}`}>
+                        {Courses[preReqOpt].name}
+                      </Link>
+                      {i < preReq.courses.length - 1 ? ", " : ""}
+                    </div>
+                  ))}
+                </p>
               );
             }
-            return (
-              <p>{` ${i > 0 && "and "}${preReq.num} of ${preReq.courses.map(
-                (preReqOpt) => <p>{preReqOpt}</p>
-              )}`}</p>
-            );
+            return null;
           })
         : "None"}
     </div>

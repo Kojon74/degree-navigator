@@ -369,14 +369,14 @@ const Requirements1 = [
     {
       type: "elective",
       name: Electives.CoreMagicStudies.name,
-      numCourses: 8,
+      numCourses: 6,
     },
   ],
   [
     {
       type: "elective",
       name: Electives.CoreMagicTheoryAndPractices.name,
-      numCourses: 8,
+      numCourses: 6,
     },
   ],
   [
@@ -393,20 +393,12 @@ const Requirements1 = [
     },
     {
       type: "course",
-      name: Courses.MuggleMath2.name,
-    },
-    {
-      type: "course",
       name: Courses.MuggleScience1.name,
-    },
-    {
-      type: "course",
-      name: Courses.MuggleScience2.name,
     },
     {
       type: "elective",
       name: Electives.CommonMuggleElectives.name,
-      numCourses: 1,
+      numCourses: 3,
     },
   ],
   [
@@ -418,34 +410,25 @@ const Requirements1 = [
   ],
   [
     {
-      type: "elective",
-      name: Electives.MagicStudiesElectives.name,
-      numCourses: 6,
-    },
-    {
-      type: "courses",
-      name: [
+      type: "elective&courses",
+      bound: "least",
+      elective: Electives.MagicStudiesElectives.name,
+      courses: [
         Courses.Arithmancy1.name,
         Courses.Alchemy1.name,
         Courses.Alchemy2.name,
         Courses.Divination1.name,
-        Courses.Telempathy.name,
+        Courses.Telepathy.name,
       ],
-      numCourses: 4,
-    },
-  ],
-  [
-    {
-      type: "elective",
-      name: Electives.AdvancedMagicTheoryAndPractices.name,
-      numCourses: 3,
+      numCourses: 6,
+      numSubCourses: 4,
     },
   ],
   [
     {
       type: "electives",
       name: Electives.ExtraCurricularOptionalSubjects.name,
-      numCourses: 1,
+      numCourses: 2,
     },
   ],
 ];
@@ -455,7 +438,7 @@ const Requirements2 = [
     {
       type: "elective",
       name: Electives.CoreMagicStudies.name,
-      numCourses: 8,
+      numCourses: 6,
     },
   ],
   [
@@ -469,7 +452,7 @@ const Requirements2 = [
     {
       type: "elective",
       name: Electives.CoreMagicTheoryAndPractices.name,
-      numCourses: 3,
+      numCourses: 2,
     },
   ],
   [
@@ -491,59 +474,31 @@ const Requirements2 = [
     {
       type: "elective",
       name: Electives.CommonMuggleElectives.name,
-      numCourses: 3,
+      numCourses: 2,
     },
   ],
   [
-    {
-      type: "elective",
-      name: Electives.AdvancedMuggleElectives.name,
-      numCourses: 1,
-    },
-  ],
-  [
-    {
-      type: "course",
-      name: Courses.CombatMagic2.name,
-    },
-    {
-      type: "course",
-      name: Courses.CombatMagic2.name,
-    },
     {
       type: "elective",
       name: Electives.AdvancedCombatElectives.name,
-      numCourses: 4,
+      numCourses: 2,
     },
   ],
   [
     {
-      type: "elective",
-      name: Electives.MagicStudiesElectives.name,
-      numCourses: 2,
-    },
-    {
-      type: "courses",
-      name: [
+      type: "elective&courses",
+      bound: "most",
+      elective: Electives.MagicStudiesElectives.name,
+      courses: [
         Courses.MuggleStudies.name,
         Courses.CareOfMagicalCreatures.name,
         Courses.FieldStudiesOfMagicalCreatures.name,
       ],
-      numCourses: 1,
+      numCourses: 2,
+      numSubCourses: 1,
     },
   ],
   [
-    {
-      type: "elective",
-      name: Electives.AdvancedMagicTheoryAndPractices.name,
-      numCourses: 1,
-    },
-  ],
-  [
-    {
-      type: "course",
-      name: Courses.Flying1.name,
-    },
     {
       type: "elective",
       name: Electives.ExtraCurricularOptionalSubjects.name,
