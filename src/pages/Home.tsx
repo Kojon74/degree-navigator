@@ -25,13 +25,14 @@ const Home = ({ setPath }: Props) => {
 
   return (
     <div>
+      <h1>Requirements</h1>
       {Requirements.map((list) => (
         <div
           style={{
             borderWidth: 1,
             borderColor: "black",
             borderStyle: "solid",
-            margin: "10px",
+            margin: "10px 0",
             padding: "10px",
           }}
         >
@@ -46,12 +47,12 @@ const Home = ({ setPath }: Props) => {
               numSubCourses,
             }: RequirementsType) => (
               <div>
-                <p style={{ display: "inline" }}>
-                  {type === "course" || numCourses === 1
-                    ? "1 course"
-                    : `${numCourses} courses`}{" "}
-                  from{" "}
-                </p>
+                {(type === "elective" || type === "elective&courses") &&
+                  numCourses && (
+                    <p style={{ display: "inline" }}>
+                      {numCourses} {numCourses > 1 ? "courses" : "course"} from{" "}
+                    </p>
+                  )}
                 {type === "elective&courses" &&
                 elective &&
                 courses &&
