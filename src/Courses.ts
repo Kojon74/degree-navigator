@@ -104,7 +104,7 @@ const Courses: {
   Cooking: { name: "Cooking" },
   DarkArts1: { name: "Dark Arts 1" },
   DarkArts2: { name: "Dark Arts 2", preReqs: ["DarkArts1", "Charms1"] },
-  DarkArts3: { name: "Dark Arts 3", preReqs: ["DarkArts2", "Charms2"] },
+  DarkArts3: { name: "Dark Arts 3", preReqs: ["DarkArts2"] },
   DefenseAgainstTheDarkArts1: { name: "Defense Against the Dark Arts 1" },
   DefenseAgainstTheDarkArts2: {
     name: "Defense Against the Dark Arts 2",
@@ -209,7 +209,7 @@ const Courses: {
   Transfiguration1: { name: "Transfiguration 1", preReqs: ["Potions1"] },
   Transfiguration2: {
     name: "Transfiguration 2",
-    preReqs: ["Transfiguration1", "Potions2"],
+    preReqs: ["Transfiguration1"],
   },
   Xylomancy1: { name: "Xylomancy 1" },
   Xylomancy2: { name: "Xylomancy 2", preReqs: ["Xylomancy1", "Charms1"] },
@@ -236,13 +236,17 @@ const Electives: {
       Courses.Herbology1.name,
       Courses.Herbology2.name,
       Courses.Potions1.name,
+      Courses.HistoryOfMagic1.name,
+      Courses.HistoryOfMagic2.name,
     ],
   },
   CoreMagicTheoryAndPractices: {
     name: "Core Magic Theory and Practices",
     courses: [
+      Courses.Astronomy1.name,
       Courses.Astronomy2.name,
       Courses.Astronomy3.name,
+      Courses.Herbology2.name,
       Courses.Herbology3.name,
       Courses.Potions2.name,
       Courses.Potions3.name,
@@ -301,6 +305,8 @@ const Electives: {
       Courses.HealingMagic1.name,
       Courses.IntroductionToElementalMagic.name,
       Courses.CombatMagic1.name,
+      Courses.Divination1.name,
+      Courses.Flying1.name,
     ],
   },
   AdvancedCombatElectives: {
@@ -313,6 +319,7 @@ const Electives: {
       Courses.YrdenSignMagic.name,
       Courses.HealingMagic2.name,
       Courses.Aquakinesis.name,
+      Courses.Flying2.name,
     ],
   },
   MagicStudiesElectives: {
@@ -341,8 +348,8 @@ const Electives: {
       Courses.AxiiSignMagic.name,
     ],
   },
-  ExtraCurricularOptionalSubjects: {
-    name: "Extra Curricular / Optional Subjects",
+  ExtraCurricularSubjects: {
+    name: "Extra Curricular Subjects",
     courses: [
       Courses.AncientStudies.name,
       Courses.Art1.name,
@@ -426,8 +433,8 @@ const Requirements1 = [
   ],
   [
     {
-      type: "electives",
-      name: Electives.ExtraCurricularOptionalSubjects.name,
+      type: "elective",
+      name: Electives.ExtraCurricularSubjects.name,
       numCourses: 2,
     },
   ],
@@ -459,6 +466,13 @@ const Requirements2 = [
     {
       type: "elective",
       name: Electives.CoreMuggleStudies.name,
+      numCourses: 4,
+    },
+  ],
+  [
+    {
+      type: "elective",
+      name: Electives.IntroCombatElectives.name,
       numCourses: 4,
     },
   ],
@@ -501,7 +515,7 @@ const Requirements2 = [
   [
     {
       type: "elective",
-      name: Electives.ExtraCurricularOptionalSubjects.name,
+      name: Electives.ExtraCurricularSubjects.name,
       numCourses: 1,
     },
   ],
